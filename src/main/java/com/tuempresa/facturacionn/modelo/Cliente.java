@@ -13,4 +13,7 @@ public class Cliente {
 
     @Column (length = 50)
     String nombre;
+
+    @Embedded
+    Direccion direccion; // Una referencia Java convencional
 }
