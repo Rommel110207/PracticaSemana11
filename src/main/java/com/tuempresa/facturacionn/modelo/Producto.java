@@ -10,4 +10,10 @@ public class Producto {
 
     @Column(length=50) @Required
     String descripcion;
+
+    @ManyToOne( // La referencia se almacena como una relación en la base de datos
+            fetch=FetchType.LAZY,
+            optional=true)
+    @DescriptionsList
+    Categoria categoria; // Una referencia Java convencional
 }
