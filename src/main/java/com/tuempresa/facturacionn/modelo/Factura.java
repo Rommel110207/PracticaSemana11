@@ -1,6 +1,8 @@
 package com.tuempresa.facturacionn.modelo;
 import java.time.*;
 import javax.persistence.*;
+
+import com.tuempresa.facturacionn.calculadores.CalculadorSiguienteNumeroParaAnyo;
 import org.hibernate.annotations.GenericGenerator;
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
@@ -16,11 +18,15 @@ public class Factura
     @Column(length=32)
     String oid;
 
+
+
     @Column(length=4)
     @DefaultValueCalculator(CurrentYearCalculator.class) // Año actual
     int anyo;
 
     @Column(length=6)
+    @DefaultValueCalculator(value= CalculadorSiguienteNumeroParaAnyo.class,
+            properties=@PropertyValue(name="anyo"))
     int numero;
 
     @Required
@@ -29,4 +35,7 @@ public class Factura
 
     @TextArea
     String observaciones;
+
+    @ManyToOne(fetch=FetchType.LAZY, optional=false) // El cliente es obligatorio
+    Cliente cliente;
 }
