@@ -8,7 +8,7 @@ public class ConexionPostgres {
 
     public static void main(String[] args) {
         // Cambia estos valores por los de tu base de datos
-        String url = "jdbc:postgresql://localhost:5432/nombre_de_tu_base_de_datos";
+        String url = "jdbc:postgresql://localhost:5432/ejemploBD";
         String usuario = "postgres";
         String contraseña = "tu_password";
 
